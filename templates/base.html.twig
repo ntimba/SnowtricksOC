@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+        <link rel="stylesheet" href="{{ asset('public/css/style.css') }}">
+
+        {% block stylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+{% block importmap %}{{ importmap('app') }}{% endblock %}
+        {% endblock %}
+    </head>
+    <body>
+        {# Navigation #}
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                {# <a class="navbar-brand" href="{{ path('app_home') }}"> #}
+                <a class="navbar-brand" href="">
+                    Snowtricks
+                    {# <img src="./assets/img/logo-snowtricks.png" alt="Snowtricks" width="50" height="50"> #}
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Figures</a>
+                        </li>
+                        
+                        {% if not app.user %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Se connecter</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">S'enregistrer</a>
+                        </li>
+                        {% endif %} 
+                    </ul>
+
+                    {# {% if app.user and app.user.email %} #}
+                    {% if app.user %}
+                        {# // afficher les infirmations #}
+                    <div class="d-flex align-items-center connected-user-badge">
+                        <div class="rounded-img">
+                            <img src="" alt="">
+                        </div>
+
+                        <div class="dropdown">
+                            <a class="dropdown-toggle ms-3" role="button" data-bs-toggle="dropdown">Prénom Nom</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="">Créer une figure</a></li>
+                                <li><a class="dropdown-item" href="">Créer un groupe</a></li>
+                                <li><a class="dropdown-item" href="">Paramètre</a></li>
+                                <li><a class="dropdown-item" href="">Sécurité</a></li>
+                                <li><a class="dropdown-item" href="">Se déconnecter</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </nav>
+        
+        {# Web content #}
+        <div class="container">
+        
+
+
+        {% block body %}{% endblock %}
+        </div>
+
+        {# Footer #}
+        <footer class="footer mt-5 py-3 bg-light">
+            <div class="container">
+                <span class="text-muted">Copyright © 2023 - Tous drois reservés</span>
+            </div>
+        </footer>
+
+        {# js file for adding tricks videos #}
+        <script src="{{ asset('js/snowtricks.js') }}"></script>
+
+        <script src="{{ asset('js/trickscarousel.js') }}"></script>
+
+        {# js files for bootstrap #}
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+
+        {# <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script> #}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </body>
+</html>
+
