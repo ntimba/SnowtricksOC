@@ -25,20 +25,6 @@ class EmailService
         $mailer->send($email);
 
         return new HttpFoundationResponse("Email sent");
-    }
-
-      // $email = new TemplatedEmail();
-            // $email->from('ro-reply@ntimba.me')
-            //       ->to($user->getEmail())
-            //       ->subject("Confirmation de votre inscription sur" . $siteUrlWithoutScheme)
-            //       ->htmlTemplate('emails/_email_user_validation.html.twig')
-            //       ->context([
-            //         'siteUrl' => $siteUrlWithoutScheme,
-            //         'fullname' => $user->getFirstname() .' '. $user->getLastname(),
-            //         'confirmLink' => $confirmLink
-            //       ]);
-
-            // $mailer->send($email);
-    
+    }    
 }
 
