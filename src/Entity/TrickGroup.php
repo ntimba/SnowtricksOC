@@ -28,7 +28,7 @@ class TrickGroup
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
-    #[ORM\OneToMany(targetEntity: Trick::class, mappedBy: 'groupId')]
+    #[ORM\OneToMany(targetEntity: Trick::class, mappedBy: 'group')]
     private Collection $tricks;
 
     public function __construct()
@@ -101,7 +101,7 @@ class TrickGroup
     {
         if (!$this->tricks->contains($trick)) {
             $this->tricks->add($trick);
-            $trick->setGroupId($this);
+            $trick->setGroup($this);
         }
 
         return $this;
@@ -111,8 +111,8 @@ class TrickGroup
     {
         if ($this->tricks->removeElement($trick)) {
             // set the owning side to null (unless already changed)
-            if ($trick->getGroupId() === $this) {
-                $trick->setGroupId(null);
+            if ($trick->getGroup() === $this) {
+                $trick->setGroup(null);
             }
         }
 

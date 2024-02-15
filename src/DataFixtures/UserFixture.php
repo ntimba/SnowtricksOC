@@ -29,7 +29,7 @@ class UserFixture extends Fixture
             [
                 'firstname' => 'John',
                 'lastname' => 'Doh',
-                'email' => 'john.doh@snowtricks.com',
+                'email' => 'hello@snowtricks.com',
                 'emailverified' => true,
                 'password' => 'admin'
             ],
@@ -75,8 +75,11 @@ class UserFixture extends Fixture
             $user->setPassword($this->passwordHasher->hashPassword($user, $plainTextPassword));
 
             $manager->persist($user);
+
+            $this->addReference($userData['email'], $user);
+            
         }
-        
         $manager->flush();
+        
     }
 }

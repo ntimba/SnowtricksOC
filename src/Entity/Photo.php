@@ -14,7 +14,7 @@ class Photo
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'photos')]
-    private ?Trick $trickId = null;
+    private ?Trick $trick = null;
 
     #[ORM\Column(length: 255)]
     private ?string $filePath = null;
@@ -30,14 +30,14 @@ class Photo
         return $this->id;
     }
 
-    public function getTrickId(): ?Trick
+    public function getTrick(): ?Trick
     {
-        return $this->trickId;
+        return $this->trick;
     }
 
-    public function setTrickId(?Trick $trickId): static
+    public function setTrick(?Trick $trick): static
     {
-        $this->trickId = $trickId;
+        $this->trick = $trick;
 
         return $this;
     }

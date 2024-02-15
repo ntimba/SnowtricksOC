@@ -23,7 +23,7 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 {# <a class="navbar-brand" href="{{ path('app_home') }}"> #}
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="{{ path('app_home') }}">
                     Snowtricks
                     {# <img src="./assets/img/logo-snowtricks.png" alt="Snowtricks" width="50" height="50"> #}
                 </a>
@@ -33,18 +33,18 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="">Accueil</a>
+                            <a class="nav-link active" aria-current="page" href="{{ path('app_home') }}">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Figures</a>
+                            <a class="nav-link" href="{{ path('app_home') }}#tricks">Figures</a>
                         </li>
                         
                         {% if not app.user %}
                         <li class="nav-item">
-                            <a class="nav-link" href="">Se connecter</a>
+                            <a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">S'enregistrer</a>
+                            <a class="nav-link" href="{{ path('app_signup') }}">S'enregistrer</a>
                         </li>
                         {% endif %} 
                     </ul>

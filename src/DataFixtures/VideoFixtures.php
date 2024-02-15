@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Trick;
 use App\Entity\Video;
 use App\Repository\TrickRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -15,12 +16,16 @@ class VideoFixtures extends Fixture
     {
         $this->trickRepository = $trickRepository;
     }
+
+    public function getDependencies()
+    {
+        return [
+            Trick::class
+        ];
+    }
     
     public function load(ObjectManager $manager): void
     {
-        // $product = new Product();
-        // $manager->persist($product);
-
         $videosData = [
             [
                 "name" => "Le Indy",
@@ -77,7 +82,7 @@ class VideoFixtures extends Fixture
         {
             $video = new Video();
             $video->setEmbedCode($videoData['embedcode']);
-            $video->setTrickId( $this->trickRepository->findOneBy(['name' => $videoData['name']]) );
+            $video->setTrick( $this->getReference($videoData['name']) );
 
             $manager->persist($video);
         }

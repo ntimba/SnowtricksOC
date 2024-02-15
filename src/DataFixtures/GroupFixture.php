@@ -42,12 +42,14 @@ class GroupFixture extends Fixture
             ];
 
         foreach($trickGroups as $group){
-            $trickGroup1 = new TrickGroup();
-            $trickGroup1->setName($group['groupName']);
-            $trickGroup1->setDescription($group['description']);
+            $trickGroup = new TrickGroup();
+            $trickGroup->setName($group['groupName']);
+            $trickGroup->setDescription($group['description']);
    
-            $manager->persist($trickGroup1);
-            $manager->flush();
+            $manager->persist($trickGroup);
+
+            $this->addReference( $group['groupName'], $trickGroup );
         }
+        $manager->flush();
     }
 }

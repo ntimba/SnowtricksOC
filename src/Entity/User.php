@@ -237,7 +237,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->tricks->contains($trick)) {
             $this->tricks->add($trick);
-            $trick->setUserId($this);
+            $trick->setUser($this);
         }
 
         return $this;
@@ -247,8 +247,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->tricks->removeElement($trick)) {
             // set the owning side to null (unless already changed)
-            if ($trick->getUserId() === $this) {
-                $trick->setUserId(null);
+            if ($trick->getUser() === $this) {
+                $trick->setUser(null);
             }
         }
 

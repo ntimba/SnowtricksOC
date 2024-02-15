@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Photo;
+use App\Entity\Trick;
 use App\Repository\TrickRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -16,6 +17,12 @@ class PhotoFixtures extends Fixture
         $this->trickRepository = $trickRepository;
     }
 
+    public function getDependencies(){
+        return [
+            Trick::class,
+        ];
+    }
+
     public function load(ObjectManager $manager): void
     {
 
@@ -23,7 +30,7 @@ class PhotoFixtures extends Fixture
             [
                 "trick" => "Le Indy",
                 "filepath" => "https://bit.ly/4bGN3nK",
-                "description" => "",
+                "description" => "image snowboard redbull",
             ],
             [
                 "trick" => "Le Indy",
@@ -182,7 +189,7 @@ class PhotoFixtures extends Fixture
             $photo = new Photo();
             $photo->setFilePath($photoData['filepath']);
             $photo->setDescription($photoData['description']);
-            $photo->setTrickId( $this->trickRepository->findOneBy(['name' =>$photoData['trick'] ]) );
+            $photo->setTrick( $this->getReference( $photoData['trick'] ) );
 
             $manager->persist( $photo );
         }
