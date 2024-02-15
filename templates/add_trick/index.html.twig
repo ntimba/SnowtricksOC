@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AddTrickController!{% endblock %}
+
+{% block body %}
+
+    <h1 class="mb-5 mt-5">Ajouter une figure</h1>
+
+    <form action="{{ path('app_add_trick') }}" method="POST" enctype="multipart/form-data" class="form-floating mb-5">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- formulaire -->
+                <div class="form-floating mb-2">
+                    <input type="text" name="_name" class="form-control" id="floatingTitle" placeholder="name@example.com">
+                    <label for="floatingTitle">Titre de la figure</label>
+                </div>
+
+                {# Group selection #}
+                <div class="form-floating mb-2">
+                    <select name="_group" class="form-select" aria-label="Default select example" aria-describedby="categoryHelp">
+                        {% for group in groups %}
+                            <option value="{{ group.name }}">{{ group.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="floatingTitle">Catégorie de la figure</label>
+        
+                    <div id="categoryHelp" class="form-text">
+                        Si la catégorie que vous-vous ne figure pas dans la liste, vous pouvez en créer une sur <a href="{{ path('app_add_trick_group') }}">ce lien</a>
+                    </div>
+                </div>
+
+                {# Group description #}
+                <div class="form-floating mb-2">
+                    <textarea name="_description" class="form-control" id="floatingTrickDescription" cols="30" rows="30" aria-describedby="trickDescriptionHelp"></textarea>
+                    <label for="floatingTrickDescription">Description de la figure</label>
+                    <div id="trickDescriptionHelp" class="form-text">
+                            Décriver la figure
+                    </div>
+                </div>  
+                </div>
+
+                <div class="col-md-6">
+                    <div class="d-flex">
+                        <button type="button" id="add-image" class="add-image btn btn-primary me-3">Ajouter une image</button>
+                        <button type="button" id="add-video" class="add-video btn btn-primary">Ajouter une video</button>
+                    </div>
+
+                    <div class="media">
+                        <div class="images mt-5">
+                        <!-- les cards pour ajouter des images -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Importer vos images</h5>
+                                <p class="card-text">Ces images seron afficher dans la page de la figure</p>
+                            </div>
+                            <ul id="images-list" class="list-group list-group-flush">
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="videos mt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Importer vos videos</h5>
+                                <p class="card-text">Ces vidéos seront afficher dans la page de la figure</p>
+                            </div>
+                            <ul id="videos-list" class="videos-list list-group list-group-flush">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary" type="button">Créer une figure</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
