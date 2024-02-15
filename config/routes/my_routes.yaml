@@ -1,0 +1,5 @@
+# config/routes/my_routes.yaml
+email_validation:
+    path: /account/validation/{token}
+    controller: App\Controller\SignupController::validateEmail
+    methods: [GET]

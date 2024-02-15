@@ -1,0 +1,44 @@
+    <div class="tricks mt-5" id="tricks">
+        <div class="row" id="content" >
+            {% for trick in pagination %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    {% set firstPhoto = trick.photos.first %}
+                    <img src="{{ firstPhoto ? asset(firstPhoto.filePath) : 'https://source.unsplash.com/800x600' }}" class="card-img-top" alt="{{ firstPhoto ? firstPhoto.description : 'Default Image' }}">
+                    
+                    <div class="card-body trick-card">
+                        <h5 class="card-title">{{ trick.name }}</h5>
+                        <span class="badge bg-secondary">{{ trick.group.name }}</span>
+                            
+                        <div class="trick-card__meta align-items-center mt-3">
+                            <div class="trick-card__userprofile"><img src="" alt=""></div>
+                            <p class="card-text"><small class="text-body-secondary"> par {{ trick.user.firstname }} . {{ trick.createdAt|date( 'd M. Y', 'Europe/Paris' ) }}</small></p>
+                        </div>
+
+                        <!-- Trick modify -->
+                        {% if app.user %}
+                        <ul class="mt-3 mb-3 d-flex trick-modify">
+                            <li class="me-3"><a href="#"><i class="bi bi-pencil-fill"></i></a></li>
+                            <li><a href="#"><i class="bi bi-trash-fill"></i></a></li>
+                        </ul>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+    
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex justify-content-center mt-5 mb-5">
+                    {# {{ knp_pagination_render(pagination) }} #}
+                    <button id="loadingButton" class="btn btn-primary" type="button" disabled style="display:none;" >
+                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                        chargement...
+                    </button>
+                </div>
+            </div>
+        </div> 
+    </div>

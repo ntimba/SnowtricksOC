@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+{# Hero section #}
+    <div class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Snøw tricks</h1>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere dignissimos amet corrupti suscipit illo voluptate minus. Aliquam fuga adipisci corporis ducimus nisi, nulla sed repellendus omnis dignissimos deserunt obcaecati autem?</p>
+                    <a href="{{ path('app_home') }}#tricks" class="btn btn-primary">voir les tricks</a>
+                </div>
+            </div>
+        </div>
+
+
+    <button onclick="downFunction()" id="myDownButton" title="Go to bottom" ><i class="bi bi-arrow-down"></i></button>
+
+    </div>
+
+
+{# top scroll button #}
+    <button onclick="topFunction()" id="myTopButton" title="Go to top" ><i class="bi bi-arrow-up"></i></button>
+
+{# Card list #}
+{% include 'partials/_tricksList.html.twig' %}
+
+
+    <script>
+        // Obtenir les boutons
+        let myTopButton = document.getElementById("myTopButton");
+        let myDownButton = document.getElementById("myDownButton");
+
+        // Lorsque l'utilisateur fait défiler la page de 20px depuis le haut du document, afficher le bouton
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                myTopButton.style.display = "block";
+                myDownButton.style.display = "none"; // Assurez-vous que l'autre bouton est caché
+            } else {
+                myTopButton.style.display = "none";
+                myDownButton.style.display = "block";
+            }
+        }
+
+        // Lorsque l'utilisateur clique sur le bouton, faire défiler vers le haut du document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        function downFunction() {
+            window.scrollTo({
+                top: document.documentElement.scrollHeight,
+                behavior: 'smooth' // Optionnel: Ajoute un effet de défilement animé
+            });
+        }
+
+    </script>
+
+
+
+    {# infinite scrolling #}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let page = 1;
+        const totalPages = {{ pagination.getPaginationData()['pageCount'] | json_encode | raw }};
+        let isFetching = false; // Pour éviter de multiples requêtes en même temps
+
+        function handleScroll() {
+            if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 2 && !isFetching) {
+                if (page < totalPages) {
+                    isFetching = true;
+                    page++;
+                    const loadingButton = document.getElementById('loadingButton');
+                    loadingButton.style.display = 'block'; // Afficher le bouton de chargement
+
+                    fetch(`/?page=${page}`, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.content) {
+                                document.getElementById('content').innerHTML += data.content;
+                                isFetching = false;
+                            }
+                            loadingButton.style.display = 'none'; // Cacher le bouton de chargement une fois le contenu chargé
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            isFetching = false;
+                            loadingButton.style.display = 'none'; // Cacher le bouton en cas d'erreur
+                        });
+                }
+            }
+
+            // Votre logique pour afficher/cacher les boutons de défilement
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                myTopButton.style.display = "block";
+            } else {
+                myTopButton.style.display = "none";
+            }
+        }
+
+        window.onscroll = handleScroll;
+    });
+</script>
+
+{% endblock %}
+
