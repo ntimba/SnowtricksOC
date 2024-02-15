@@ -12,8 +12,8 @@ class GroupFixture extends Fixture
     {
         $trickGroups = [
                 [
-                    "groupName" => "Les groups",
-                    "description" => "Un grab consiste à attraper la planche avec la main pendant le saut."
+                    "groupName" => "Les Grabs",
+                    "description" => "Les Grabs sont la colonne vertébrale des figures de snowboard. Stylé et classe, c'est en attrapant la planche en plein vol, à une ou deux mains, que le freestyle est né."
                 ],
                 [
                     "groupName" => "Les rotations",

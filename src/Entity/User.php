@@ -48,10 +48,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Token::class, mappedBy: 'userId')]
     private Collection $tokens;
 
+    #[ORM\OneToMany(targetEntity: Trick::class, mappedBy: 'userId')]
+    private Collection $tricks;
+
     public function __construct()
     {
         $this->emailVerified = false;
         $this->tokens = new ArrayCollection();
+        $this->tricks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -215,6 +219,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         if ($this->tokens->removeElement($token)) {
             if ($token->getUserId() === $this) {
                 $token->setUserId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Trick>
+     */
+    public function getTricks(): Collection
+    {
+        return $this->tricks;
+    }
+
+    public function addTrick(Trick $trick): static
+    {
+        if (!$this->tricks->contains($trick)) {
+            $this->tricks->add($trick);
+            $trick->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTrick(Trick $trick): static
+    {
+        if ($this->tricks->removeElement($trick)) {
+            // set the owning side to null (unless already changed)
+            if ($trick->getUserId() === $this) {
+                $trick->setUserId(null);
             }
         }
 
