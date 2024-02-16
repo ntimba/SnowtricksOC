@@ -1,0 +1,162 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TrickDetailController!{% endblock %}
+
+{% block body %}
+    {# recupérer la première image du trick #}
+    {% set firstPhoto = trick.photos.first %}
+    <div class="trick-hero" style="background-image: url({{ firstPhoto ? asset(firstPhoto.filePath) : 'https://source.unsplash.com/800x600' }})">
+        <!-- navigation -->
+        <div class="container">
+            {% if app.user %}
+                <div class="ps-5" style="position:relative">
+                    <ul class="mt-3 mb-3 d-flex trick-modify-1">
+                        <li class="me-3"><a href="#"><i class="bi bi-pencil-fill"></i></a></li>
+                        <li><a href="#"><i class="bi bi-trash-fill"></i></a></li>
+                    </ul>
+                </div>
+            {% endif %}
+            <div class="row">
+                <div class="trick-hero__title">
+                    <h1>{{ trick.name }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tricks -->    
+    <div class="trick-content mt-5" id="">
+        <div class="container">
+            <!-- trick media -->
+            <div class="row mx-auto my-auto justify-content-center mb-5">
+                <div id="mediaCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+
+                    <div class="carousel-inner" role="listbox">
+                        {% for item in mediaItems %}
+                            <div class="carousel-item {{ loop.first ? 'active' : '' }}">
+                                <div class="col-md-3">
+                                    <div class="card">
+                                        <div class="card-img">
+                                            {% if item.type == 'photo' %}
+                                                <img src="{{ asset(item.path) }}" class="img-fluid">
+                                            {% elseif item.type == 'video' %}
+                                                <iframe width="100%" height="200" src="https://www.youtube.com/embed/{{ item.code }}" frameborder="0" allowfullscreen></iframe>
+                                            {% endif %}
+                                        </div>
+
+                                        {% if app.user %}
+                                            <div class="ps-5">
+                                                <ul class="mt-3 mb-3 d-flex trick-modify">
+                                                    <li class="me-3"><a href="#"><i class="bi bi-pencil-fill"></i></a></li>
+                                                    <li><a href="#"><i class="bi bi-trash-fill"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>                
+
+                    </div>
+                    <a class="carousel-control-prev bg-transparent w-aut" href="#mediaCarousel" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next bg-transparent w-aut" href="#mediaCarousel" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Trick content -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        {{ trick.description }}
+                    </div>
+                    
+                    {# trick meta data #}
+                    <div class="d-flex justify-content-center mt-5">
+                        {# <div class="trick-card__meta align-items-center mt-3"> #}
+                        <div class="d-flex align-items-center mt-3 me-3">
+                        {# {{ firstPhoto ? asset(firstPhoto.filePath) : 'https://source.unsplash.com/800x600' }} #}
+                            <div class="trick_meta_userprofile"><img src="{{ asset('images/profile.png')  }}" alt=""></div>
+                            <p class="card-text"><small class="text-body-secondary"> par {{ trick.user.firstname }} . {{ trick.createdAt|date( 'd M. Y', 'Europe/Paris' ) }}</small></p>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mt-3 grid gap-3">
+                            <p>dernière modification : {{ trick.createdAt|date( 'd M. Y', 'Europe/Paris' ) }}</p>
+                            <p>Dernière mise à jour : {{ trick.createdAt|date( 'd M. Y', 'Europe/Paris' ) }}</p>
+                            <p>Groupe : {{ trick.group.name }}</p>
+                        </div>
+
+                        <div class="d-flex align-items-center mt-3">
+                        </div>
+                    </div>
+
+                    <div class="mt-5 d-flex justify-content-center">
+                        <form class="row g-3">
+                            <div class="col-auto">
+                                <label for="comment" class="visually-hidden">Commentaire</label>
+                                <input type="text" class="form-control" id="comment" placeholder="Commentaire">
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary mb-3">Laissez un commentaire</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trick comments -->
+            <div class="comments">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="mt-5 mb3">Commentaires</h3>
+                        <div class="comment p-4 mb-2">
+                            <div class="d-flex ">
+                                <div class="circle-img">
+                                    <img class="" src="{{ asset('images/profile.png')  }}" alt="">
+                                </div>
+    
+                                <div>
+                                    <div class="comment__username">
+                                        <p>Patrick Lumba</p>
+                                    </div>
+                                    <div class="comment__content">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae rerum ullam obcaecati quia fuga alias, doloremque quod a consectetur? Voluptate fugiat asperiores eos officia vitae quia laudantium voluptatum sapiente quos.</p>
+                                        <a href="">Répondre</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+
+
+<script>
+    let items = document.querySelectorAll('.carousel .carousel-item')
+
+    items.forEach((el) => {
+            const minPerSlide = 4
+            let next = el.nextElementSibling
+            for (var i=1; i<minPerSlide; i++) {
+                if (!next) {
+            // wrap carousel by using first child
+            next = items[0]
+        }
+        let cloneChild = next.cloneNode(true)
+        el.appendChild(cloneChild.children[0])
+        next = next.nextElementSibling
+        }
+    })
+</script>
+{% endblock %}
+
+
+
