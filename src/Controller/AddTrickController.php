@@ -57,9 +57,9 @@ class AddTrickController extends AbstractController
                 $trick = new Trick();
                 $trick->setName( $trickName );
                 $trick->setDescription( $trickDescription );
-                $trick->setGroupId( $group );
+                $trick->setGroup( $group );
                 $trick->setStatus(TrickStatus::published); 
-                $trick->setUserId($user);
+                $trick->setUser($user);
         
                 /**
                  * adding the trick
@@ -79,6 +79,9 @@ class AddTrickController extends AbstractController
                 }
 
                 $this->manager->flush();
+
+                $this->addFlash('success', "Trick a été créer avec succès");
+                return $this->redirectToRoute('app_home');
 
             }else{
 
@@ -113,7 +116,7 @@ class AddTrickController extends AbstractController
             foreach ($embedCodes as $embedCode) {
                 $video = new Video();
                 $video->setEmbedCode($embedCode);
-                $video->setTrickId( $trick );
+                $video->setTrick( $trick );
     
                 $this->manager->persist($video);
             }

@@ -7,7 +7,10 @@
                     <img src="{{ firstPhoto ? asset(firstPhoto.filePath) : 'https://source.unsplash.com/800x600' }}" class="card-img-top" alt="{{ firstPhoto ? firstPhoto.description : 'Default Image' }}">
                     
                     <div class="card-body trick-card">
-                        <h5 class="card-title">{{ trick.name }}</h5>
+                        <a href="{{ path('app_trick_detail', {'slug': trick.slug}) }}">
+                            <h5 class="card-title">{{ trick.name }}</h5>
+                        </a>
+                        
                         <span class="badge bg-secondary">{{ trick.group.name }}</span>
                             
                         <div class="trick-card__meta align-items-center mt-3">

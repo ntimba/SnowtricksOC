@@ -22,7 +22,7 @@ body {
     border-radius: 4px;
   }
   
-#myTopButton:hover {
+#myTopButton, #myDownButton:hover {
     background-color: #555;
   }
 
@@ -44,5 +44,119 @@ body {
     
 }
 
-  /* myTopButton */
-  /* myDownButton */
+/* détail trick */
+.trick-card__meta {
+  display: flex;
+}
+.trick-card__userprofile, .trick_meta_userprofile {
+  margin-right: 1rem;
+}
+.trick-card__userprofile, .trick_meta_userprofile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.trick_meta_userprofile{
+  /* test */
+}
+
+.circle-img {
+  margin-right: 1rem;
+}
+.circle-img img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+
+/* slider trick */
+@media (max-width: 767px) {
+  .carousel-inner .carousel-item > div {
+      display: none;
+  }
+  
+  .carousel-inner .carousel-item > div:first-child {
+      display: block;
+  }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+  display: flex;
+}
+
+/* medium and up screens */
+@media (min-width: 768px) {
+
+  .carousel-inner .carousel-item-end.active,
+  .carousel-inner .carousel-item-next {
+      transform: translateX(25%);
+  }
+
+  .carousel-inner .carousel-item-start.active, 
+  .carousel-inner .carousel-item-prev {
+      transform: translateX(-25%);
+  }
+}
+
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start { 
+  transform: translateX(0);
+}
+
+/* pour modifier les figures */
+.trick-modify{
+  list-style: none;
+  padding: 0;
+}
+
+
+/* Card */
+.card-img {
+  /* Assurez-vous que le conteneur a une taille explicite */
+  width: 100%; /* ou une largeur spécifique */
+  height: 200px; /* ou une hauteur spécifique */
+  overflow: hidden; /* Cache les parties de l'image qui débordent */
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Couvre le conteneur sans perdre les proportions */
+}
+
+
+/* Trick Detail */
+.trick-modify-1{
+  list-style: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.trick-hero{
+  height: 400px;
+  background-size: cover;
+  background-position: cover;
+  border-radius: 20px;
+
+  position: relative;
+}
+
+
+.trick-hero__title{
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+}
+
+
+
+
+/* width="300" height="200" */

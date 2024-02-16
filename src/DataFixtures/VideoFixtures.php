@@ -29,51 +29,51 @@ class VideoFixtures extends Fixture
         $videosData = [
             [
                 "name" => "Le Indy",
-                "embedcode" => '<iframe width="560" height="315" src="https://www.youtube.com/embed/EzGPmg4fFL8?si=-m_4WJNxEtbFCrZQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+                "embedcode" => 'BqDWZ_z4GQw',
             ],
             [
                 "name" => "Le Stalefish",
-                "embedcode" => '<iframe width="560" height="315" src="https://www.youtube.com/embed/EzGPmg4fFL8?si=-m_4WJNxEtbFCrZQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+                "embedcode" => 'BqDWZ_z4GQw',
             ], 
             [
                 "name" => "Le Tail",
-                "embedcode" => '<iframe width="560" height="315" src="https://www.youtube.com/embed/EzGPmg4fFL8?si=-m_4WJNxEtbFCrZQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+                "embedcode" => 'BqDWZ_z4GQw',
             ], 
             [
                 "name" => "Le Weddle",
-                "embedcode" => '<iframe width="560" height="315" src="https://www.youtube.com/embed/EzGPmg4fFL8?si=-m_4WJNxEtbFCrZQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+                "embedcode" => 'BqDWZ_z4GQw',
             ], 
             [
                 "name" => "Le Melon",
-                "embedcode" => '<iframe width="560" height="315" src="https://www.youtube.com/embed/EzGPmg4fFL8?si=-m_4WJNxEtbFCrZQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+                "embedcode" => 'BqDWZ_z4GQw',
             ], 
             [
                 "name" => "Le Method",
-                "embedcode" => '<iframe width="560" height="315" src="https://www.youtube.com/embed/EzGPmg4fFL8?si=-m_4WJNxEtbFCrZQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+                "embedcode" => 'BqDWZ_z4GQw',
             ], 
             [
                 "name" => "Le Nose",
-                "embedcode" => '<iframe width="560" height="315" src="https://www.youtube.com/embed/EzGPmg4fFL8?si=-m_4WJNxEtbFCrZQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+                "embedcode" => 'BqDWZ_z4GQw',
             ], 
             [
                 "name" => "Le Wildcat",
-                "embedcode" => '<iframe width="560" height="315" src="https://www.youtube.com/embed/EzGPmg4fFL8?si=-m_4WJNxEtbFCrZQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+                "embedcode" => 'BqDWZ_z4GQw',
             ], 
             [
                 "name" => "Le Tamedog",
-                "embedcode" => '<iframe width="560" height="315" src="https://www.youtube.com/embed/EzGPmg4fFL8?si=-m_4WJNxEtbFCrZQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+                "embedcode" => 'BqDWZ_z4GQw',
             ], 
             [
                 "name" => "Le Backflip",
-                "embedcode" => '<iframe width="560" height="315" src="https://www.youtube.com/embed/EzGPmg4fFL8?si=-m_4WJNxEtbFCrZQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+                "embedcode" => 'BqDWZ_z4GQw',
             ], 
             [
                 "name" => "Le Frontflip",
-                "embedcode" => '<iframe width="560" height="315" src="https://www.youtube.com/embed/EzGPmg4fFL8?si=-m_4WJNxEtbFCrZQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+                "embedcode" => 'BqDWZ_z4GQw',
             ], 
             [
                 "name" => "Le Rodéo",
-                "embedcode" => '<iframe width="560" height="315" src="https://www.youtube.com/embed/EzGPmg4fFL8?si=-m_4WJNxEtbFCrZQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+                "embedcode" => 'BqDWZ_z4GQw',
             ], 
         ];
 
